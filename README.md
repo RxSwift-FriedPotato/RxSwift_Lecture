@@ -21,6 +21,6 @@
 
 |주차|메뉴|레시피|담당 
 |:--------:|:--------:|:--------:|:--------:|
-|**1주차**|About RxSwift, Observable, Disposesable|추가예정|장서현🍟<br>한상진🍟
+|**1주차**|About RxSwift, Observable, Disposesable|[Link📑](https://github.com/ezidayzi/RxSwift_R4/blob/main/1%EC%A3%BC%EC%B0%A8/Week1.md)|장서현🍟<br>한상진🍟
 
 </div>

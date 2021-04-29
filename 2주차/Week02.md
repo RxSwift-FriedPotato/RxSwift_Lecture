@@ -1,14 +1,14 @@
 2주차 목차
 
 - [🧾Subject란?](#subject란)
-  - [Observable_vs_Observer](#Observable_vs_Observer)
-  - [Subject_vs_Observable](#Subject_vs_Observable)
-- [🧾PublishSubject](#PublishSubject)
-- [🧾BehaviorSubject](#BehaviorSubject)
-- [🧾ReplaySubject](#ReplaySubject)
-- [🧾AsyncSubject](#AsyncSubject)
-- [🧾Relay란?](#rRelay)
-    -  - [Relay_vs_Subject](#Relay_vs_Subject)
+  - [Observable vs Observer](#observable-vs-observer)
+  - [Subject_vs_Observable](#subject-vs-observable)
+- [🧾PublishSubject](#publishsubject)
+- [🧾BehaviorSubject](#behaviorsubject)
+- [🧾ReplaySubject](#replaysubject)
+- [🧾AsyncSubject](#asyncsubject)
+- [🧾Relay란?](#relay)
+    -  - [Relay vs Subject](#relay-vs-subject)
 
 <br>
 
@@ -21,7 +21,7 @@
 
 <br>
 
-## Observable_vs_Observer
+## Observable vs Observer
 
 - Observable은 관찰 가능한 상태를 유지하면 Event를 전달해요.
 - 해당 Event를 Observer에게 전달하고 Observer에서 처리합니다.
@@ -31,7 +31,7 @@
 
 <br>
 
-## Subject_vs_Observable
+## Subject vs Observable
 
 | Observable | Subject |
 | ------ | ------ |
@@ -49,16 +49,89 @@ Observable, Observer들 간의 interaction, 유연성있는 코드도 가능하�
 
 <br>
 
+- 구독한 뒤에  Observable이 보낸 이벤트를 전달받아요
+- element 없이 빈 상태로 생성되고, subscribe한 시점 이후에 발생되는 이벤트만 전달받아요.
+
+```swift
+        let disposeBag = DisposeBag()
+        let subject = PublishSubject<String>()
+        
+        subject.onNext("Hi")
+        
+        let o1 = subject.subscribe {print (">>1",$0)}
+        o1.disposed(by: disposeBag)
+        
+        subject.onNext("a")
+        subject.onNext("b")
+
+        let o2 = subject.subscribe{print(">>2",$0)}
+        o2.disposed(by: disposeBag)
+        
+        subject.onNext("c")
+        subject.onNext("d")
+```
+
+출력 결과는?
+<pre>
+>>1 next(a)
+>>1 next(b)
+>>1 next(c)
+>>2 next(c)
+>>1 next(d)
+>>2 next(d)
+</pre>
+
+
+
 # 🧾BehaviorSubject
 
 <br>
 
+- 구독  후에 발생한 시점 이전에 발생한 이벤트 중 가장 최신의 이벤트를 전달받아요.
+- PublishSubject와 유사하지만 반드시 초기값을 가지고 생성된다는 점이 달라요!
+
+
+```swift
+        let disposeBag = DisposeBag()
+        
+        let subject = BehaviorSubject<String>(value: "start") //observer
+        
+        subject.onNext("Hi")
+        
+        let o1 = subject.subscribe {print (">>1",$0)}
+        o1.disposed(by: disposeBag)
+        
+        subject.onNext("a")
+        subject.onNext("b")
+
+        let o2 = subject.subscribe{print(">>2",$0)}
+        o2.disposed(by: disposeBag)
+        
+        subject.onNext("c")
+        subject.onNext("d")
+```
+
+출력결과는?
+<pre>
+>>1 next(Hi)
+>>1 next(a)
+>>1 next(b)
+>>2 next(b)
+>>1 next(c)
+>>2 next(c)
+>>1 next(d)
+>>2 next(d)
+</pre>
+
 # 🧾ReplaySubject
 
 - Broadcasts new events to all subscribers, and the specified bufferSize number of previous events to new subscribers.
+- ReplaySubject는 구독 전에 발생한 이벤트를 버퍼에 넣고, 버퍼에 있던 이벤트를 구독 후에 전달해요.
 - 미리 **사이즈**를 정해줘야해요. - 몇 개의 기본값?을 가질지 지정
 - 메모리 관리를 신경쓰지 않으려면 createUnbounded 로 설정해줄 수 있긴해요. - 조심!
-- 버퍼사이즈에 따라 최신 순으로 이벤트를 버퍼에 저장해두고 구독합니다.
+- 만약 버퍼 크기가 0이라면 PublishSubject와 같은 역할을 해요.
+- 어떻게 본다면 BehaviorSubject와 유사해요!
+- 버퍼사이즈만큼의 최신 이벤트를 전달받아요.
 
 ```swift
 
@@ -115,7 +188,7 @@ asubject.onNext(5)
 
 <br>
 
-##  Relay_vs_Subject
+##  Relay vs Subject
 
 - onNext 대신 accept를 사용합니다. (subject와는 달라요.)
 - error, completed는 전달하지 않아요.

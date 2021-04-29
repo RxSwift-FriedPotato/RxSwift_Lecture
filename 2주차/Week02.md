@@ -2,7 +2,7 @@
 
 - [🧾Subject란?](#subject란)
   - [Observable vs Observer](#observable-vs-observer)
-  - [Subject_vs_Observable](#subject-vs-observable)
+  - [Subject vs Observable](#subject-vs-observable)
 - [🧾PublishSubject](#publishsubject)
 - [🧾BehaviorSubject](#behaviorsubject)
 - [🧾ReplaySubject](#replaysubject)

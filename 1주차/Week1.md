@@ -298,11 +298,11 @@ Observable의 subscribe을 사용하면 모두 Disposable을 return(반환)하�
 Disposable에는 여러가지 종류가 있습니다. 우선 가장 많이 쓰일법한 것 위주로 정리해두었습니다.
 
 1.	Disposables
-    -	Disposables.create() : Observable dispose 시점에서 처리할 동작이 없을 때
-    -	Disposables.create{} : Observable dispose 시점에서 처리할 동작이 있을 때, {} 안에 코드를 넣어준다.
+    -	Disposables.create() : Observable dispose 시점에서 처리할 동작이 '없을' 때 사용
+    -	Disposables.create{} : Observable dispose 시점에서 처리할 동작이 '있을' 때 사용, {} 안에 코드를 넣어준다.
 
-2.	BooleanDisposable() : dispose 상태 여부를 알고 싶을 때
+2.	BooleanDisposable() : dispose 상태 여부를 알고 싶을 때 사용
 
     예를 들어 비동기 작업을 수행하는 Observable이 있다고 합시다. 더 이상 그 작업이 필요하지 않아서 Observable을 dispose한 뒤, 해당 작업의 결과를 수행하지 않기 위해 dispose 되었다는 상태값이 필요할 수 있습니다. 즉, dispose한 뒤 처리할 동작은 없지만 dispose 상태를 알아야 할 때 사용하는 것입니다.
 
-3. CompositeDisposable : 여러 개의 disposable을 한번에 관리하고 싶을 때 key값을 이용하면 개별적으로 dispose도 가능하다.
+3. CompositeDisposable : 여러 개의 disposable을 한번에 관리하고 싶을 때 사용, key값을 이용하면 개별적으로도 dispose가 가능하다.

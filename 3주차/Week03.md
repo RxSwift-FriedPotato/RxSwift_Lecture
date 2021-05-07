@@ -11,7 +11,44 @@
 - 엄청나게 많은 [Operators](http://reactivex.io/documentation/ko/operators.html)가 존재... 다 알 수 없으니 제일 많이 사용되는 4가지만 우선적으로 알아봐요!! ><
 
 ## just
+- 하나의 element를 observable로 만드는 역할
+```swift
+func exJust1() {
+        Observable.just("Hello World")
+            .subscribe(onNext: { str in
+                print(str)
+            })
+            .disposed(by: disposeBag)
+    }
+```
+
+출력결과는 ?
+```swift
+exjust1()
+Hello World
+```
+
 ## from
+- array, dictionary, set 등의 배열 형태를 observable sequence로 만드는 역할
+```swift
+func exFrom1() {
+        Observable.from(["RxSwift", "In", "4", "Hours"])
+            .subscribe(onNext: { str in
+                print(str)
+            })
+            .disposed(by: disposeBag)
+    }
+```
+
+출력결과는 ?
+```swift
+exFrom1()
+RxSwift
+In
+4
+Hours
+```
+
 ## map
 - 위에서 내려온 데이터를 가공하는 역할
 ```swift

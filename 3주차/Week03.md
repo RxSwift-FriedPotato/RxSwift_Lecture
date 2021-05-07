@@ -24,7 +24,6 @@ func exJust1() {
 
 출력결과는 ?
 ```swift
-exjust1()
 Hello World
 ```
 
@@ -42,7 +41,6 @@ func exFrom1() {
 
 출력결과는 ?
 ```swift
-exFrom1()
 RxSwift
 In
 4

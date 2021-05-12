@@ -24,4 +24,5 @@
 |**1주차**|About RxSwift, Observable, Disposesable|[Link📑](https://github.com/ezidayzi/RxSwift_R4/blob/main/1%EC%A3%BC%EC%B0%A8/Week1.md)|장서현🍟<br>한상진🍟
 |**2주차**|About Subject, Relay|[Link📑](https://github.com/ezidayzi/RxSwift_R4/blob/main/2%EC%A3%BC%EC%B0%A8/Week02.md)|김윤서🍟<br>홍진석🍟
 |**3주차**|Operators|[Link📑](https://github.com/ezidayzi/RxSwift_R4/blob/main/3%EC%A3%BC%EC%B0%A8/Week03.md)|장서현🍟<br>김윤서🍟
+|**4주차**|RxSwift Traits|[Link📑](https://github.com/ezidayzi/RxSwift_R4/blob/main/4%EC%A3%BC%EC%B0%A8/Week04.md)|한상진🍟<br>홍진석🍟
 </div>

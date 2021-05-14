@@ -7,7 +7,7 @@
 - [🧾Completable란?](#completable)
     - [📌 Completable 사용하기](#-completable-사용하기)
 - [🧾Maybe란?](#maybe)
-    - [📌 Completable 사용하기](#-maybe-사용하기)
+    - [📌 Maybe 사용하기](#-maybe-사용하기)
 
 <br>
 
@@ -164,6 +164,7 @@ getRepo("ReactiveX/RxSwift")
 <img width="500" alt="maybe" src="https://user-images.githubusercontent.com/70695311/118115177-974a0e00-b423-11eb-8fdd-2240121a4d7f.png">
 
 <br>
+
 ### 📌 Maybe 사용하기
 
 ```swift
